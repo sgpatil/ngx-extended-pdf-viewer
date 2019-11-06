@@ -7,16 +7,26 @@ import { NgxExtendedPdfViewerComponent } from './ngx-extended-pdf-viewer.compone
 export class NgxExtendedPdfViewerService {
   constructor() {}
 
-  public find(text: string): boolean {
+  public find(text: string, pageNumber: string): boolean {
     if (!NgxExtendedPdfViewerComponent.ngxExtendedPdfViewerInitialized) {
       // tslint:disable-next-line:quotemark
       console.error("The PDF viewer hasn't finished initializing. Please call find() later.");
       return false;
     } else {
       const inputField = document.getElementById('findInput');
+      const pageNumberField = document.getElementById('findPageNumber');
       if (inputField) {
+
+        if(pageNumberField){
+          pageNumberField.setAttribute('value', pageNumber);
+          //pageNumberField.dispatchEvent(new Event('input'));
+        }
+
         inputField.setAttribute('value', text);
         inputField.dispatchEvent(new Event('input'));
+
+        
+
         return true;
       } else {
         // tslint:disable-next-line:quotemark

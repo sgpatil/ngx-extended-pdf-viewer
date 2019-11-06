@@ -45,7 +45,7 @@ export class AppComponent {
   }
 
   public set searchtext(text: string) {
-    if (this.ngxExtendedPdfViewerService.find(text)) {
+    if (this.ngxExtendedPdfViewerService.find(text, "2")) {
       this._searchtext = text;
     }
   }
